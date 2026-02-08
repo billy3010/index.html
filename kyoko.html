@@ -316,6 +316,48 @@
     </div>
 </div>
 
+    <div style="max-width: 400px; margin: 20px auto; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px;">
+    <canvas id="statusChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('statusChart');
+
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['パワー', 'スピード', 'テクニック', 'スタミナ', 'マイク'],
+            datasets: [{
+                label: '選手能力値',
+                data: [70, 60, 80, 90, 85], // ここに数値をいれる（0〜100）
+                
+                // ★ここで色を変えられます！（キュート：ピンク系）
+                backgroundColor: 'rgba(255, 102, 153, 0.4)', // 中の塗りつぶし
+                borderColor: '#ff6699',                     // 枠線
+                borderWidth: 3,
+                pointBackgroundColor: '#ff6699'
+            }]
+        },
+        options: {
+            scales: {
+                r: {
+                    angleLines: { color: '#666' },
+                    grid: { color: '#666' },
+                    pointLabels: { color: '#fff', font: { size: 14 } }, // 文字色
+                    ticks: { display: false, stepSize: 20 },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            },
+            plugins: {
+                legend: { labels: { color: '#fff' } }
+            }
+        }
+    });
+</script>
+
 <script>
     const chartOptions = {
         scales: {
@@ -372,3 +414,4 @@
 </body>
 
 </html>
+
