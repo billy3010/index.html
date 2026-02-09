@@ -3,165 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WRESTLE M@STER CINDERELLA GIRLS</title>
+    <title>THE WRESTLEM@STER CINDERELLA GIRLS</title>
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: 'Impact', 'Arial Black', sans-serif;
+        /* --- 基本設定 --- */
+        :root {
+            --gold-color: #ffdb4d; /* ロゴのゴールドに近い色 */
+            --text-white: #ffffff;
+            --overlay-color: rgba(0, 10, 40, 0.7); /* 紺色ベースの半透明オーバーレイ */
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: #000;
+            overflow: hidden; /* スクロールバーを消す */
         }
 
-        header {
-            background: linear-gradient(135deg, #222, #444);
-            padding: 50px 20px;
+        /* --- 背景設定エリア --- */
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 背景画像 */
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('belt.png'); /* ベルトの横長画像 */
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            filter: brightness(0.8); /* 元画像を少し暗くする */
+        }
+
+        /* 薄く見せるためのオーバーレイヤー */
+        .bg-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--overlay-color);
+            /* グラデーションでリッチな雰囲気を出す */
+            background: radial-gradient(circle at center, rgba(0,10,60,0.5) 0%, rgba(0,0,20,0.9) 100%);
+            z-index: -1;
+        }
+
+        /* --- メインコンテンツ --- */
+        .content-wrapper {
             text-align: center;
-            border-bottom: 5px solid #2681c8;
+            z-index: 10;
+            padding: 20px;
         }
 
-        h1 { margin: 0; font-size: 3em; color: #2681c8; text-transform: uppercase; }
-
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-
-        /* 属性セクションの共通設定 */
-        .attribute-section {
+        /* ロゴ画像 */
+        .main-logo {
+            max-width: 600px;
+            width: 80%;
+            height: auto;
             margin-bottom: 60px;
-            padding: 20px;
-            border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.05);
+            /* 登場アニメーション（任意） */
+            animation: fadeInDown 1.5s ease-out;
         }
 
-        .section-title {
-            font-size: 2em;
-            padding-left: 15px;
-            margin-bottom: 25px;
-            text-align: left;
+        /* --- ナビゲーション --- */
+        .main-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* 画面が狭い時に折り返す */
+            gap: 2vw; /* 横幅に応じた可変の間隔 */
         }
 
-        /* 属性別カラー定義 */
-        .cute { border-left: 10px solid #ff6699; } /* ピンク */
-        .cool { border-left: 10px solid #0066ff; } /* ブルー */
-        .passion { border-left: 10px solid #ffcc00; } /* イエロー/オレンジ */
-
-        .cute .section-title { color: #ff6699; }
-        .cool .section-title { color: #0066ff; }
-        .passion .section-title { color: #ffcc00; }
-
-        /* 選手カードのデザイン */
-        .player-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+        .nav-item {
+            margin: 10px;
+            /* 登場アニメーション（任意） */
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
         }
+        /* 各項目のアニメーション開始時間をずらす */
+        .nav-item:nth-child(1) { animation-delay: 0.5s; }
+        .nav-item:nth-child(2) { animation-delay: 0.7s; }
+        .nav-item:nth-child(3) { animation-delay: 0.9s; }
+        .nav-item:nth-child(4) { animation-delay: 1.1s; }
 
-        .player-card {
-            background: #333;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.2s;
-        }
-
-        .player-card:hover { transform: scale(1.05); }
-
-        .btn-link {
-            display: block;
-            margin-top: 15px;
-            padding: 10px;
+        .nav-link {
             text-decoration: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 4px;
+            color: var(--text-white);
+            font-size: 1.8rem;
+            font-weight: 900; /* 極太フォント */
+            letter-spacing: 4px; /* 文字間を広く */
+            text-transform: uppercase; /* 全て大文字 */
+            padding: 10px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            /* 文字の輪郭を少し光らせる */
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
-        /* 属性別ボタンカラー */
-        .cute .btn-link { background-color: #ff6699; }
-        .cool .btn-link { background-color: #0066ff; }
-        .passion .btn-link { background-color: #ffcc00; color: #000; }
+        /* ホバー時のエフェクト */
+        .nav-link:hover {
+            color: var(--gold-color);
+            text-shadow: 0 0 20px var(--gold-color), 0 0 40px var(--gold-color);
+            transform: scale(1.1); /* 少し拡大 */
+        }
 
-        footer { text-align: center; padding: 40px; color: #666; }
+        /* 下線のエフェクト */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gold-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 80%; /* ホバー時に線が伸びる */
+        }
+
+
+        /* --- アニメーション定義 --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* スマホ向け調整 */
+        @media (max-width: 768px) {
+            .main-logo { margin-bottom: 40px; }
+            .main-nav { flex-direction: column; gap: 15px; }
+            .nav-link { font-size: 1.5rem; letter-spacing: 2px; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>WRESTLE M@STER</h1>
-        <p style="color: ##2681c8;">- STARLIGHT RING -</p>
-    </header>
-
-    <div class="container">
-
-        <section class="attribute-section cute">
-            <div class="section-title">CUTE DIVISION</div>
-            <div class="player-grid">
-                <div class="player-card">
-                    <h3>島村 卯月</h3>
-                    <a href="uzuki.html" class="btn-link">VIEW PROFILE</a>
-                </div>
-                 <div class="player-card">
-                    <h3>小日向 美穂</h3>
-                    <a href="miho.html" class="btn-link">VIEW PROFILE</a>
-                </div>
-                 <div class="player-card">
-                    <h3>五十嵐 響子</h3>
-                    <a href="kyoko.html" class="btn-link">VIEW PROFILE</a>
-            　  </div> 
-                 <div class="player-card">
-                    <h3>三村 かな子</h3>
-                    <a href="kanako.html" class="btn-link">VIEW PROFILE</a>
-                </div>
-                  <div class="player-card">
-                    <h3>前川 みく</h3>
-                    <a href="miku.html" class="btn-link">VIEW PROFILE</a>
-                </div>
-                <div class="player-card">
-                    <h3>安部 菜々</h3>
-                    <a href="nana.html" class="btn-link">VIEW PROFILE</a>
-                </div>
-                </div>
-        </section>
-
-        <section class="attribute-section cool">
-            <div class="section-title">COOL DIVISION</div>
-            <div class="player-grid">
-                <div class="player-card">
-                    <h3>COMING SOON</h3>
-                    <p>New Challenger...</p>
-                    <a href="#" class="btn-link">LOCKED</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="attribute-section passion">
-            <div class="section-title">PASSION DIVISION</div>
-            <div class="player-grid">
-                <div class="player-card">
-                    <h3>COMING SOON</h3>
-                    <p>New Challenger...</p>
-                    <a href="#" class="btn-link">LOCKED</a>
-                </div>
-            </div>
-        </section>
-
+    <div class="hero-container">
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
+        
+        <div class="content-wrapper">
+            <img src="logo.png" alt="WRESTLE M@STER Logo" class="main-logo">
+            
+            <ul class="main-nav">
+                <li class="nav-item"><a href="#" class="nav-link">NEWS</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">SCHEDULE</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">RESULTS</a></li>
+                <li class="nav-item"><a href="roster.html" class="nav-link">WRESTLERS</a></li>
+            </ul>
+        </div>
     </div>
-
-    <footer>
-        &copy; 2026 STARLIGHT RING OFFICIAL
-    </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

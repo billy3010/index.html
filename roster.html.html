@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WRESTLERS</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #222, #444);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 5px solid #2681c8;
+        }
+
+        h1 { margin: 0; font-size: 3em; color: #2681c8; text-transform: uppercase; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+
+        /* 属性セクションの共通設定 */
+        .attribute-section {
+            margin-bottom: 60px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title {
+            font-size: 2em;
+            padding-left: 15px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        /* 属性別カラー定義 */
+        .cute { border-left: 10px solid #ff6699; } /* ピンク */
+        .cool { border-left: 10px solid #0066ff; } /* ブルー */
+        .passion { border-left: 10px solid #ffcc00; } /* イエロー/オレンジ */
+
+        .cute .section-title { color: #ff6699; }
+        .cool .section-title { color: #0066ff; }
+        .passion .section-title { color: #ffcc00; }
+
+        /* 選手カードのデザイン */
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .player-card {
+            background: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .player-card:hover { transform: scale(1.05); }
+
+        .btn-link {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* 属性別ボタンカラー */
+        .cute .btn-link { background-color: #ff6699; }
+        .cool .btn-link { background-color: #0066ff; }
+        .passion .btn-link { background-color: #ffcc00; color: #000; }
+
+        footer { text-align: center; padding: 40px; color: #666; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>WRESTLERS</h1>
+        <p style="color: ##2681c8;"></p>
+    </header>
+
+    <div class="container">
+
+        <section class="attribute-section cute">
+            <div class="section-title">CUTE DIVISION</div>
+            <div class="player-grid">
+                <div class="player-card">
+                    <h3>島村 卯月</h3>
+                    <a href="uzuki.html" class="btn-link">VIEW PROFILE</a>
+                </div>
+                 <div class="player-card">
+                    <h3>小日向 美穂</h3>
+                    <a href="miho.html" class="btn-link">VIEW PROFILE</a>
+                </div>
+                 <div class="player-card">
+                    <h3>五十嵐 響子</h3>
+                    <a href="kyoko.html" class="btn-link">VIEW PROFILE</a>
+            　  </div> 
+                 <div class="player-card">
+                    <h3>三村 かな子</h3>
+                    <a href="kanako.html" class="btn-link">VIEW PROFILE</a>
+                </div>
+                  <div class="player-card">
+                    <h3>前川 みく</h3>
+                    <a href="miku.html" class="btn-link">VIEW PROFILE</a>
+                </div>
+                <div class="player-card">
+                    <h3>安部 菜々</h3>
+                    <a href="nana.html" class="btn-link">VIEW PROFILE</a>
+                </div>
+                </div>
+        </section>
+
+        <section class="attribute-section cool">
+            <div class="section-title">COOL DIVISION</div>
+            <div class="player-grid">
+                <div class="player-card">
+                    <h3>COMING SOON</h3>
+                    <p>New Challenger...</p>
+                    <a href="#" class="btn-link">LOCKED</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="attribute-section passion">
+            <div class="section-title">PASSION DIVISION</div>
+            <div class="player-grid">
+                <div class="player-card">
+                    <h3>COMING SOON</h3>
+                    <p>New Challenger...</p>
+                    <a href="#" class="btn-link">LOCKED</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 STARLIGHT RING OFFICIAL
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
