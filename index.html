@@ -16,7 +16,7 @@
             width: 100%;
             height: 100%;
             background-color: #000;
-            overflow: hidden;
+            overflow: hidden; /* イントロ中はスクロール禁止 */
             font-family: 'Impact', 'Arial Black', sans-serif;
         }
 
@@ -32,11 +32,9 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            /* 最後に画面全体をフェードアウトさせる設定 */
             transition: opacity 1.5s ease-in-out;
         }
 
-        /* 一文字ずつ刻まれる文字のスタイル */
         #intro-text {
             font-size: 5rem;
             color: var(--accent-blue);
@@ -46,12 +44,11 @@
             text-shadow: 0 0 20px rgba(38, 129, 200, 0.6);
         }
 
-        /* 文字ごとのアニメーション設定 */
         .char {
             display: inline-block;
             opacity: 0;
-            transform: scale(2); /* 最初は大きく */
-            filter: blur(10px);   /* 最初はぼかす */
+            transform: scale(2);
+            filter: blur(10px);
             animation: stampChar 0.3s forwards;
         }
 
@@ -63,12 +60,12 @@
             }
         }
 
-        /* --- 演出②：メインコンテンツ（ベルト画像とメニュー） --- */
+        /* --- 演出②：メインコンテンツ --- */
         #main-site {
-            opacity: 0; /* 最初は隠しておく */
+            opacity: 0;
             transition: opacity 2s ease-in-out;
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -87,7 +84,6 @@
             display: block;
         }
 
-        /* ナビゲーションメニュー */
         .main-nav {
             list-style: none;
             padding: 0;
@@ -95,6 +91,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 3vw;
+            margin-bottom: 80px;
         }
 
         .nav-link {
@@ -115,13 +112,106 @@
             transform: translateY(-3px);
         }
 
-        /* ローディング終了後のクラス */
+        /* --- NEWSセクションのスタイル --- */
+        .news-section {
+            max-width: 1100px;
+            width: 90%;
+            margin-bottom: 100px;
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* ニュースは読みやすさ優先 */
+        }
+
+        .section-heading {
+            font-family: 'Impact', sans-serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--accent-blue);
+            border-left: 8px solid var(--accent-blue);
+            padding-left: 20px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(38, 129, 200, 0.2);
+        }
+
+        .news-image-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #252525;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .news-image-wrap::after {
+            content: 'PRESS PHOTO';
+            color: #444;
+            font-weight: bold;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            color: #fff;
+            z-index: 10;
+            border-radius: 2px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .tag-roster { background-color: #e91e63; }
+        .tag-event { background-color: var(--accent-blue); }
+        .tag-champ { background-color: #ffaa00; }
+
+        .news-body { padding: 20px; }
+        .news-date { font-size: 0.8rem; color: #888; display: block; margin-bottom: 8px; }
+        .news-title { font-size: 1.2rem; margin: 0 0 12px 0; line-height: 1.4; color: #fff; font-weight: bold; }
+        .news-card:hover .news-title { color: var(--accent-blue); }
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-more { font-size: 0.8rem; font-weight: 900; color: var(--accent-blue); letter-spacing: 1px; }
+
+        /* 共通設定 */
         .fade-out { opacity: 0; pointer-events: none; }
         .visible { opacity: 1 !important; }
 
         @media (max-width: 768px) {
             #intro-text { font-size: 2.5rem; letter-spacing: 5px; }
             .main-nav { flex-direction: column; text-align: center; }
+            .news-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -139,11 +229,58 @@
         <div class="content-wrapper">
             <ul class="main-nav">
                 <li><a href="#" class="nav-link">NEWS</a></li>
-                <li><a href="schedule" class="nav-link">SCHEDULE</a></li>
-                <li><a href="results.html" class="nav-link">RESULTS</a></li>
+                <li><a href="schedule.html" class="nav-link">SCHEDULE</a></li>
+                <li><a href="results_list.html" class="nav-link">RESULTS</a></li>
                 <li><a href="roster.html" class="nav-link">WRESTLERS</a></li>
             </ul>
         </div>
+
+        <section class="news-section">
+            <h2 class="section-heading">LATEST NEWS</h2>
+            <div class="news-grid">
+                
+                <a href="#" class="news-card">
+                    <div class="news-image-wrap">
+                        <div class="category-tag tag-roster">ROSTER</div>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date">2026.XX.XX</span>
+                        <h3 class="news-title">【電撃参戦】765プロ・283プロ・100プロから参戦決定</h3>
+                        <p class="news-excerpt">他団体からも続々参戦決定！迎え撃つ346プロ！詳細は後日発表！</p>
+                        <span class="news-more">READ MORE</span>
+                    </div>
+                </a>
+
+                <a href="#" class="news-card">
+                    <div class="news-image-wrap">
+                        <div class="category-tag tag-event">EVENT</div>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date">2026.XX.XX</span>
+                        <h3 class="news-title">レギュラー興行「M@GIC HOUR」始動！</h3>
+                        <p class="news-excerpt">ついに今年もレギュラー興行がスタート。対戦カードは追って発表！</p>
+                        <span class="news-more">READ MORE</span>
+                    </div>
+                </a>
+
+                <a href="#" class="news-card">
+                    <div class="news-image-wrap">
+                        <div class="category-tag tag-champ">CHAMPION</div>
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date">2026.XX.XX</span>
+                        <h3 class="news-title">【至宝公開】「シンデレラガール」新チャンピオンベルトの全貌が明らかに。</h3>
+                        <p class="news-excerpt">団体の頂点に立つ者にのみ与えられる伝説のベルトを一新。デザインは「ガラスの靴」をモチーフにしている。</p>
+                        <span class="news-more">READ MORE</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <footer style="padding: 40px; color: #444; font-size: 0.8rem; font-family: sans-serif;">
+            &copy; 2026 STARLIGHT RING OFFICIAL
+        </footer>
     </div>
 
     <script>
@@ -159,25 +296,21 @@
                 const span = document.createElement('span');
                 span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
                 span.className = 'char';
-                // 表示のタイミングを一文字ずつずらす（0.15秒おき）
                 span.style.animationDelay = `${i * 0.15}s`;
                 introText.appendChild(span);
             }
 
             // 2. 全ての文字が表示された後にフェードアウトを開始
-            // 文字数 × 0.15秒 + 少しの余韻
             const totalDisplayTime = text.length * 150 + 1000;
 
             setTimeout(() => {
-                // イントロをフェードアウト
                 introOverlay.classList.add('fade-out');
                 
-                // メインサイトをフェードイン
                 setTimeout(() => {
                     mainSite.classList.add('visible');
-                    // スクロールを許可（必要であれば）
+                    // スクロールを許可
                     document.body.style.overflow = 'auto';
-                }, 500); // イントロが消え始める少し後にメインを出す
+                }, 500);
             }, totalDisplayTime);
         });
     </script>
