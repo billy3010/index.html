@@ -3,138 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE WRESTLEM@STER CINDERELLA GIRLS</title>
+    <title>WRESTLE M@STER | TOP</title>
     <style>
-        /* --- 基本設定 --- */
         :root {
-            --gold-color: #ffdb4d; /* ベルトのゴールドに近い色 */
-            --text-white: #ffffff;
-            --bg-color: #0a0a0a; /* ほぼ黒の背景色 */
+            --accent-blue: #2681c8;
+            --gold-color: #ffdb4d;
         }
 
         body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
             height: 100%;
-            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background-color: var(--bg-color);
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+        }
+
+        /* --- 演出①：真っ黒な背景のイントロ画面 --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            /* 最後に画面全体をフェードアウトさせる設定 */
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        /* 一文字ずつ刻まれる文字のスタイル */
+        #intro-text {
+            font-size: 5rem;
+            color: var(--accent-blue);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            font-style: italic;
+            text-shadow: 0 0 20px rgba(38, 129, 200, 0.6);
+        }
+
+        /* 文字ごとのアニメーション設定 */
+        .char {
+            display: inline-block;
+            opacity: 0;
+            transform: scale(2); /* 最初は大きく */
+            filter: blur(10px);   /* 最初はぼかす */
+            animation: stampChar 0.3s forwards;
+        }
+
+        @keyframes stampChar {
+            to {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        /* --- 演出②：メインコンテンツ（ベルト画像とメニュー） --- */
+        #main-site {
+            opacity: 0; /* 最初は隠しておく */
+            transition: opacity 2s ease-in-out;
+            width: 100%;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #000;
         }
 
-        /* --- 上部バナー（ベルト画像） --- */
         .top-banner-container {
             width: 100%;
-            /* 下に影を落として立体感を出す */
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            margin-bottom: 60px; /* ナビゲーションとの間隔 */
-            background: #000; /* 画像の背景を完全に黒く */
+            margin-bottom: 60px;
         }
 
         .top-banner {
             width: 100%;
             height: auto;
             display: block;
-            /* 画像が暗すぎないよう少し明るく補正（任意） */
-            /* filter: brightness(1.1); */
         }
 
-        /* --- メインコンテンツ（ナビゲーション） --- */
-        .content-wrapper {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        /* ナビゲーション */
+        /* ナビゲーションメニュー */
         .main-nav {
             list-style: none;
             padding: 0;
-            margin: 0;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 3vw; /* 横幅に応じた間隔 */
+            gap: 3vw;
         }
-
-        .nav-item {
-            margin: 10px;
-            /* 登場アニメーション */
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-        }
-        /* 各項目のアニメーション開始時間をずらす */
-        .nav-item:nth-child(1) { animation-delay: 0.2s; }
-        .nav-item:nth-child(2) { animation-delay: 0.4s; }
-        .nav-item:nth-child(3) { animation-delay: 0.6s; }
-        .nav-item:nth-child(4) { animation-delay: 0.8s; }
 
         .nav-link {
             text-decoration: none;
-            color: var(--text-white);
-            font-size: 2rem; /* 少し大きめに変更 */
+            color: #fff;
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: 4px;
             text-transform: uppercase;
             padding: 10px 20px;
             position: relative;
             transition: all 0.3s ease;
-            text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
-        /* ホバー時のエフェクト */
         .nav-link:hover {
             color: var(--gold-color);
-            text-shadow: 0 0 20px var(--gold-color), 0 0 30px var(--gold-color);
-            transform: translateY(-3px); /* 少し上に浮く */
+            text-shadow: 0 0 20px var(--gold-color);
+            transform: translateY(-3px);
         }
 
-        /* 下線のエフェクト */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 4px;
-            background: var(--gold-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px var(--gold-color); /* 線も光らせる */
-        }
-        .nav-link:hover::after {
-            width: 100%; /* 線が端まで伸びる */
-        }
+        /* ローディング終了後のクラス */
+        .fade-out { opacity: 0; pointer-events: none; }
+        .visible { opacity: 1 !important; }
 
-        /* --- アニメーション定義 --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* スマホ向け調整 */
         @media (max-width: 768px) {
-            .top-banner-container { margin-bottom: 40px; }
-            .main-nav { flex-direction: column; gap: 20px; }
-            .nav-link { font-size: 1.6rem; letter-spacing: 2px; }
+            #intro-text { font-size: 2.5rem; letter-spacing: 5px; }
+            .main-nav { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-banner-container">
-        <img src="belt.png" alt="Championship Belt" class="top-banner">
-    </div>
-    
-    <div class="content-wrapper">
-        <ul class="main-nav">
-            <li class="nav-item"><a href="#" class="nav-link">NEWS</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">SCHEDULE</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">RESULTS</a></li>
-            <li class="nav-item"><a href="roster.html" class="nav-link">WRESTLERS</a></li>
-        </ul>
+    <div id="intro-overlay">
+        <h1 id="intro-text">WRESTLE M@STER</h1>
     </div>
 
+    <div id="main-site">
+        <div class="top-banner-container">
+            <img src="belt.png" alt="Championship Belt" class="top-banner">
+        </div>
+        
+        <div class="content-wrapper">
+            <ul class="main-nav">
+                <li><a href="#" class="nav-link">NEWS</a></li>
+                <li><a href="schedule" class="nav-link">SCHEDULE</a></li>
+                <li><a href="results.html" class="nav-link">RESULTS</a></li>
+                <li><a href="roster.html" class="nav-link">WRESTLERS</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const introText = document.getElementById('intro-text');
+            const introOverlay = document.getElementById('intro-overlay');
+            const mainSite = document.getElementById('main-site');
+            const text = introText.textContent;
+            
+            // 1. 文字を一文字ずつ<span>で囲み直す
+            introText.textContent = '';
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+                span.className = 'char';
+                // 表示のタイミングを一文字ずつずらす（0.15秒おき）
+                span.style.animationDelay = `${i * 0.15}s`;
+                introText.appendChild(span);
+            }
+
+            // 2. 全ての文字が表示された後にフェードアウトを開始
+            // 文字数 × 0.15秒 + 少しの余韻
+            const totalDisplayTime = text.length * 150 + 1000;
+
+            setTimeout(() => {
+                // イントロをフェードアウト
+                introOverlay.classList.add('fade-out');
+                
+                // メインサイトをフェードイン
+                setTimeout(() => {
+                    mainSite.classList.add('visible');
+                    // スクロールを許可（必要であれば）
+                    document.body.style.overflow = 'auto';
+                }, 500); // イントロが消え始める少し後にメインを出す
+            }, totalDisplayTime);
+        });
+    </script>
 </body>
 </html>
