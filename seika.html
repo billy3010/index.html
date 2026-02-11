@@ -68,18 +68,25 @@
             border: 1px solid #333;
             position: relative;
             overflow: hidden;
-            
-            /* 背景画像の設定 */
+            background-color: #2a2a2a;
+            z-index: 1;
+        }
+
+        /* 画像を表示するレイヤー（最前面：z-index 2） */
+        .char-image-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: var(--bg-img);
             background-size: cover;
             background-position: center top;
-            
-            /* 画像を文字より前に出すための設定 */
-            z-index: 1;
-            background-color: transparent;
+            z-index: 2; /* 文字より前に出す */
         }
 
-        /* --- 【修正】PHOTO AREAの文字（画像がない時だけ見えるように後ろへ配置） --- */
+        /* PHOTO AREAの文字（画像の後ろ：z-index 1） */
         .char-image-container::after {
             content: 'PHOTO AREA';
             position: absolute;
@@ -87,16 +94,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #2a2a2a; 
             display: flex;
             align-items: center;
             justify-content: center;
             color: #444;
             font-weight: bold;
             letter-spacing: 2px;
-            
-            /* ★ここが重要：z-indexを -1 にして画像の後ろに隠す */
-            z-index: -1; 
+            z-index: 1; /* 画像の後ろに配置 */
         }
 
         .profile-info { display: flex; flex-direction: column; }
@@ -159,80 +163,3 @@
         </div>
         <div class="chart-box">
             <div class="chart-title">＜ 適性 ＞</div>
-            <canvas id="aptitudeChart"></canvas>
-        </div>
-    </div>
-
-    <div class="description-section">
-        <section>
-            <h3>得意技 / SIGNATURE MOVES</h3>
-            <ul class="move-list">
-                <li class="move-item">エラン・ド・フルーレ</li>
-                <li class="move-item">ピチカート・アームロック</li>
-                <li class="move-item">アパッショナート・ラッシュ</li>
-            </ul>
-        </section>
-
-        <section>
-            <h3>選手紹介 / PROFILE</h3>
-            <p class="bio-text">
-                バイオリンの旋律を奏でるような繊細な技術と、フェンシング仕込みの鋭い踏み込みを併せ持つ技巧派。自分に有利な間合いを保ちながら、相手の攻撃を受け流し反撃に転じる。お嬢様らしい気品を保ちつつも、勝利への一突きを決める瞬間は勝負師としての顔を見せる。
-            </p>
-        </section>
-    </div>
-    
-    <div style="text-align: center; margin-top: 50px; padding-bottom: 50px;">
-        <a href="roster.html" 
-           style="display: inline-block; padding: 12px 30px; background-color: #ff6699; color: #fff; text-decoration: none; font-weight: bold; border-radius: 5px; box-shadow: 0 4px 0 #cc3366; transition: 0.2s;">
-            ≪ BACK TO ROSTER
-        </a>
-    </div>
-</div>
-
-<script>
-    const getThemeColor = () => getComputedStyle(document.documentElement).getPropertyValue('--current-type').trim();
-    const themeColor = getThemeColor();
-    const chartFillColor = themeColor + '33';
-
-    const chartOptions = {
-        scales: {
-            r: {
-                min: 0, max: 20, beginAtZero: true,
-                ticks: { stepSize: 5, display: true, backdropColor: 'transparent', color: '#666', font: { size: 10 } },
-                grid: { color: '#333' }, angleLines: { color: '#333' },
-                pointLabels: { color: '#fff', font: { size: 12, weight: 'bold' } }
-            }
-        },
-        plugins: { legend: { display: false } },
-        responsive: true,
-        maintainAspectRatio: true
-    };
-
-    new Chart(document.getElementById('basicStatsChart'), {
-        type: 'radar',
-        data: {
-            labels: ['筋力', '体力', '根性', '技術', '速さ'],
-            datasets: [{
-                data: [8, 8, 8, 13, 10],
-                backgroundColor: chartFillColor, borderColor: themeColor, borderWidth: 3,
-                pointBackgroundColor: themeColor, pointBorderColor: '#fff'
-            }]
-        },
-        options: chartOptions
-    });
-
-    new Chart(document.getElementById('aptitudeChart'), {
-        type: 'radar',
-        data: {
-            labels: ['パワー', '打撃', '投げ', '飛び', '関節'],
-            datasets: [{
-                data: [7, 13, 8, 9, 12],
-                backgroundColor: chartFillColor, borderColor: themeColor, borderWidth: 3,
-                pointBackgroundColor: themeColor, pointBorderColor: '#fff'
-            }]
-        },
-        options: chartOptions
-    });
-</script>
-</body>
-</html>
