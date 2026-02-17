@@ -50,19 +50,36 @@
 
         .player-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 画像追加に合わせて幅を少し調整 */
             gap: 20px;
         }
 
         .player-card {
             background: #333;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             text-align: center;
             transition: transform 0.2s;
         }
 
         .player-card:hover { transform: scale(1.05); }
+
+        /* 画像表示エリアのスタイル */
+        .player-thumb {
+            width: 100%;
+            height: 150px; /* 顔を映すのに最適な高さ */
+            background-color: #222;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .player-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 枠に合わせてトリミング */
+            object-position: center 10%; /* 胸から上（顔中心）に配置を固定 */
+        }
 
         .btn-link {
             display: block;
@@ -72,6 +89,7 @@
             color: white;
             font-weight: bold;
             border-radius: 4px;
+            font-size: 0.8em;
         }
 
         .cute .btn-link { background-color: #ff6699; }
@@ -123,113 +141,113 @@
         <section class="attribute-section cute">
             <div class="section-title">CUTE DIVISION</div>
             <div class="player-grid">
-                <div class="player-card"><h3>島村　卯月</h3><a href="uzuki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>小日向　美穂</h3><a href="miho.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>五十嵐　響子</h3><a href="kyoko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>三村　かな子</h3><a href="kanako.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>前川　みく</h3><a href="miku.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>安部　菜々</h3><a href="nana.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>輿水　幸子</h3><a href="sachiko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>佐久間　まゆ</h3><a href="mayu.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>小早川　紗枝</h3><a href="sae.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>水本　ゆかり</h3><a href="yukari.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>涼宮　星花</h3><a href="seika.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>西園寺　琴歌</h3><a href="kotoka.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>栗原　ネネ</h3><a href="nene.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>棟方　愛海</h3><a href="atsumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>赤西　瑛理華</h3><a href="erika.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>井村　雪菜</h3><a href="setsuna.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>松原　早耶</h3><a href="saya.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>乙倉　悠貴</h3><a href="yuuki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>中野　有香</h3><a href="yuka.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>藤本　里奈</h3><a href="rina.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>一ノ瀬　志希</h3><a href="shiki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>宮本　フレデリカ</h3><a href="frederica.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>黒埼　ちとせ</h3><a href="chitose.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>白雪　千夜</h3><a href="chiyo.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>兵藤　レナ</h3><a href="rena.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>柳　清良</h3><a href="kiyora.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>クラリス</h3><a href="clarice.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/uzuki.jpg"></div><h3>島村　卯月</h3><a href="uzuki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/miho.jpg"></div><h3>小日向　美穂</h3><a href="miho.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kyoko.jpg"></div><h3>五十嵐　響子</h3><a href="kyoko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kanako.jpg"></div><h3>三村　かな子</h3><a href="kanako.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/miku.jpg"></div><h3>前川　みく</h3><a href="miku.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/nana.jpg"></div><h3>安部　菜々</h3><a href="nana.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/sachiko.jpg"></div><h3>輿水　幸子</h3><a href="sachiko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/mayu.jpg"></div><h3>佐久間　まゆ</h3><a href="mayu.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/sae.jpg"></div><h3>小早川　紗枝</h3><a href="sae.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/yukari.jpg"></div><h3>水本　ゆかり</h3><a href="yukari.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/seika.jpg"></div><h3>涼宮　星花</h3><a href="seika.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kotoka.jpg"></div><h3>西園寺　琴歌</h3><a href="kotoka.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/nene.jpg"></div><h3>栗原　ネネ</h3><a href="nene.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/atsumi.jpg"></div><h3>棟方　愛海</h3><a href="atsumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/erika.jpg"></div><h3>赤西　瑛理華</h3><a href="erika.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/setsuna.jpg"></div><h3>井村　雪菜</h3><a href="setsuna.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/saya.jpg"></div><h3>松原　早耶</h3><a href="saya.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/yuuki.jpg"></div><h3>乙倉　悠貴</h3><a href="yuuki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/yuka.jpg"></div><h3>中野　有香</h3><a href="yuka.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rina.jpg"></div><h3>藤本　里奈</h3><a href="rina.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/shiki.jpg"></div><h3>一ノ瀬　志希</h3><a href="shiki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/frederica.jpg"></div><h3>宮本　フレデリカ</h3><a href="frederica.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/chitose.jpg"></div><h3>黒埼　ちとせ</h3><a href="chitose.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/chiyo.jpg"></div><h3>白雪　千夜</h3><a href="chiyo.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rena.jpg"></div><h3>兵藤　レナ</h3><a href="rena.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kiyora.jpg"></div><h3>柳　清良</h3><a href="kiyora.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/clarice.jpg"></div><h3>クラリス</h3><a href="clarice.html" class="btn-link">VIEW PROFILE</a></div>
             </div>
         </section>
 
         <section class="attribute-section cool">
             <div class="section-title">COOL DIVISION</div>
             <div class="player-grid">
-                <div class="player-card"><h3>渋谷　凛</h3><a href="rin.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>神谷　奈緒</h3><a href="nao.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>北条　加蓮</h3><a href="karen.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>多田　李衣菜</h3><a href="riina.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>神崎　蘭子</h3><a href="ranko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>二宮　飛鳥</h3><a href="asuka.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>久川　颯</h3><a href="hayate.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>大石　泉</h3><a href="izumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>八神　マキノ</h3><a href="makino.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>藤原　肇</h3><a href="hajime.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>小室　千奈美</h3><a href="honoka.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>西川　保奈美</h3><a href="honami.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>松永　涼</h3><a href="ryo.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>水野　翠</h3><a href="midori.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>黒川　千秋</h3><a href="chiaki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>瀬名　詩織</h3><a href="shiori.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>東郷　あい</h3><a href="ai.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>松本　沙理奈</h3><a href="sarina.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>水木　聖來</h3><a href="seira.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>服部　瞳子</h3><a href="touko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>和久井　留美</h3><a href="rumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>三船　美優</h3><a href="miyu.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>塩見　周子</h3><a href="syuko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>鷹富士　茄子</h3><a href="kako.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>鷺沢　文香</h3><a href="fumika.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>アナスタシア</h3><a href="anastasia.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>速水　奏</h3><a href="kanade.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>新田　美波</h3><a href="minami.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>高垣　楓</h3><a href="kaede.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>川島　瑞樹</h3><a href="mizuki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>篠原　礼</h3><a href="rei.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>梅木　音葉</h3><a href="otoha.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>大和　亜季</h3><a href="aki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>木場　真奈美</h3><a href="manami.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>高峯　のあ</h3><a href="noa.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>高橋　礼子</h3><a href="reiko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>柊　志乃</h3><a href="shino.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>相川　千夏</h3><a href="chinatsu.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>桐生　つかさ</h3><a href="tsukasa.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rin.jpg"></div><h3>渋谷　凛</h3><a href="rin.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/nao.jpg"></div><h3>神谷　奈緒</h3><a href="nao.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/karen.jpg"></div><h3>北条　加蓮</h3><a href="karen.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/riina.jpg"></div><h3>多田　李衣菜</h3><a href="riina.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ranko.jpg"></div><h3>神崎　蘭子</h3><a href="ranko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/asuka.jpg"></div><h3>二宮　飛鳥</h3><a href="asuka.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/hayate.jpg"></div><h3>久川　颯</h3><a href="hayate.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/izumi.jpg"></div><h3>大石　泉</h3><a href="izumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/makino.jpg"></div><h3>八神　マキノ</h3><a href="makino.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/hajime.jpg"></div><h3>藤原　肇</h3><a href="hajime.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/honoka.jpg"></div><h3>綾瀬　穂乃香</h3><a href="honoka.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/honami.jpg"></div><h3>西川　保奈美</h3><a href="honami.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ryo.jpg"></div><h3>松永　涼</h3><a href="ryo.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/midori.jpg"></div><h3>水野　翠</h3><a href="midori.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/chiaki.jpg"></div><h3>黒川　千秋</h3><a href="chiaki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/shiori.jpg"></div><h3>瀬名　詩織</h3><a href="shiori.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ai.jpg"></div><h3>東郷　あい</h3><a href="ai.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/sarina.jpg"></div><h3>松本　沙理奈</h3><a href="sarina.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/seira.jpg"></div><h3>水木　聖來</h3><a href="seira.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/touko.jpg"></div><h3>服部　瞳子</h3><a href="touko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rumi.jpg"></div><h3>和久井　留美</h3><a href="rumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/miyu.jpg"></div><h3>三船　美優</h3><a href="miyu.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/syuko.jpg"></div><h3>塩見　周子</h3><a href="syuko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kako.jpg"></div><h3>鷹富士　茄子</h3><a href="kako.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/fumika.jpg"></div><h3>鷺沢　文香</h3><a href="fumika.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/anastasia.jpg"></div><h3>アナスタシア</h3><a href="anastasia.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kanade.jpg"></div><h3>速水　奏</h3><a href="kanade.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/minami.jpg"></div><h3>新田　美波</h3><a href="minami.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kaede.jpg"></div><h3>高垣　楓</h3><a href="kaede.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/mizuki.jpg"></div><h3>川島　瑞樹</h3><a href="mizuki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rei.jpg"></div><h3>篠原　礼</h3><a href="rei.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/otoha.jpg"></div><h3>梅木　音葉</h3><a href="otoha.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/aki.jpg"></div><h3>大和　亜季</h3><a href="aki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/manami.jpg"></div><h3>木場　真奈美</h3><a href="manami.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/noa.jpg"></div><h3>高峯　のあ</h3><a href="noa.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/reiko.jpg"></div><h3>高橋　礼子</h3><a href="reiko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/shino.jpg"></div><h3>柊　志乃</h3><a href="shino.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/chinatsu.jpg"></div><h3>相川　千夏</h3><a href="chinatsu.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/tsukasa.jpg"></div><h3>桐生　つかさ</h3><a href="tsukasa.html" class="btn-link">VIEW PROFILE</a></div>
             </div>
         </section>
 
         <section class="attribute-section passion">
             <div class="section-title">PASSION DIVISION</div>
             <div class="player-grid">
-                <div class="player-card"><h3>本田　未央</h3><a href="mio.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>日野　茜</h3><a href="akane.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>高森　藍子</h3><a href="aiko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>十時　愛梨</h3><a href="airi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>相葉　夕美</h3><a href="yumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>浜口　あやめ</h3><a href="ayame.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>ナターリア</h3><a href="natalia.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>イヴ・サンタクロース</h3><a href="eve.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>及川　雫</h3><a href="shizuku.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>向井　拓海</h3><a href="takumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>小松　伊吹</h3><a href="ibuki.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>松山　久美子</h3><a href="kumiko.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>浜川　愛結奈</h3><a href="ayuna.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>相馬　夏美</h3><a href="natsumi.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>大槻　唯</h3><a href="yui.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>城ヶ崎　莉嘉</h3><a href="rika.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>城ヶ崎　美嘉</h3><a href="mika.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>沢田　麻理菜</h3><a href="marina.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>佐藤　心</h3><a href="shin.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>片桐　早苗</h3><a href="sanae.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>財前　時子</h3><a href="tokiko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/mio.jpg"></div><h3>本田　未央</h3><a href="mio.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/akane.jpg"></div><h3>日野　茜</h3><a href="akane.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/aiko.jpg"></div><h3>高森　藍子</h3><a href="aiko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/airi.jpg"></div><h3>十時　愛梨</h3><a href="airi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/yumi.jpg"></div><h3>相葉　夕美</h3><a href="yumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ayame.jpg"></div><h3>浜口　あやめ</h3><a href="ayame.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/natalia.jpg"></div><h3>ナターリア</h3><a href="natalia.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/eve.jpg"></div><h3>イヴ・サンタクロース</h3><a href="eve.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/shizuku.jpg"></div><h3>及川　雫</h3><a href="shizuku.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/takumi.jpg"></div><h3>向井　拓海</h3><a href="takumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ibuki.jpg"></div><h3>小松　伊吹</h3><a href="ibuki.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/kumiko.jpg"></div><h3>松山　久美子</h3><a href="kumiko.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/ayuna.jpg"></div><h3>浜川　愛結奈</h3><a href="ayuna.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/natsumi.jpg"></div><h3>相馬　夏美</h3><a href="natsumi.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/yui.jpg"></div><h3>大槻　唯</h3><a href="yui.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/rika.jpg"></div><h3>城ヶ崎　莉嘉</h3><a href="rika.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/mika.jpg"></div><h3>城ヶ崎　美嘉</h3><a href="mika.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/marina.jpg"></div><h3>沢田　麻理菜</h3><a href="marina.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/shin.jpg"></div><h3>佐藤　心</h3><a href="shin.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/sanae.jpg"></div><h3>片桐　早苗</h3><a href="sanae.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/tokiko.jpg"></div><h3>財前　時子</h3><a href="tokiko.html" class="btn-link">VIEW PROFILE</a></div>
             </div>
         </section>
 
         <section class="attribute-section other">
             <div class="section-title">OTHER</div>
             <div class="player-grid">
-                <div class="player-card"><h3>千川　ちひろ</h3><a href="chihiro.html" class="btn-link">VIEW PROFILE</a></div>
-                <div class="player-card"><h3>美城GM</h3><a href="mishiro.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/chihiro.jpg"></div><h3>千川　ちひろ</h3><a href="chihiro.html" class="btn-link">VIEW PROFILE</a></div>
+                <div class="player-card"><div class="player-thumb"><img src="img/mishiro.jpg"></div><h3>美城GM</h3><a href="mishiro.html" class="btn-link">VIEW PROFILE</a></div>
             </div>
         </section>
 
@@ -245,32 +263,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
