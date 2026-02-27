@@ -168,6 +168,36 @@
             .title { font-size: 2.5rem; }
             .event-grid { grid-template-columns: 1fr; }
         }
+
+/* ★修正点：ポスターエリア内の画像設定 */
+.poster-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* 枠に合わせて自動トリミング */
+    
+    /* ★ここが重要：上半分を優先して表示 */
+    object-position: center top; 
+    
+    position: relative;
+    z-index: 2;           /* 文字より前に出す */
+}
+
+/* ★修正：このページの一覧画像の表示設定 */
+.event-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* 枠に合わせてトリミング */
+    
+    /* ★ここが重要：上半分を優先して表示 */
+    object-position: center top; 
+    
+    position: absolute;   /* 枠いっぱいに広げる */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+
     </style>
 </head>
 <body>
@@ -180,10 +210,10 @@
     <div class="event-grid">
         
         <a href="ppv01" class="event-card">
-            <span class="badge">COMING SOON</span>
+            <span class="badge">NEW</span>
             <div class="event-banner">
-                <img src="img/ppvposter1.jpg" alt="Event Poster">
-                </div>
+    <img src="img/ppvposter1.jpg" alt="event banner">
+</div>
             <div class="event-details">
                 <span class="event-date">2026.XX.XX</span>
                 <div class="event-name">DOMINATED IDOL VOl.1</div>
@@ -202,5 +232,4 @@
 </div>
 
 </body>
-
 </html>
