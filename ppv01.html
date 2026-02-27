@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPV LIVE | WRESTLE M@STER</title>
+    <style>
+        :root {
+            --accent-blue: #2681c8;
+            --gold: #ffdb4d;
+            --bg-dark: #0a0a0a;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ヘッダー：プロレス興行らしいインパクト */
+        header {
+            background: linear-gradient(to bottom, #222, #000);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .event-title-main {
+            font-family: 'Impact', sans-serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-style: italic;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 219, 77, 0.4);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* 興行ポスターエリア */
+        .event-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 60px;
+            border: 1px solid #333;
+        }
+
+        .poster-area {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #444;
+            position: relative;
+        }
+
+        .poster-area::after {
+            content: 'OFFICIAL EVENT POSTER';
+            color: #444;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .event-details h2 {
+            font-family: 'Impact', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-top: 0;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table th, .info-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+            text-align: left;
+        }
+
+        .info-table th { color: var(--gold); width: 30%; }
+
+        /* チケット選択エリア */
+        .ticket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .ticket-card {
+            background: #222;
+            border: 2px solid #333;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .ticket-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .ticket-name { font-weight: bold; font-size: 1.5rem; margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 900; color: var(--gold); margin: 20px 0; }
+        .price span { font-size: 1rem; }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 4px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .buy-button:hover {
+            background: #fff;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* 注意事項 */
+        .notes {
+            background: #111;
+            padding: 30px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 50px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .event-hero { grid-template-columns: 1fr; }
+            .event-title-main { font-size: 2rem; }
+        }
+/* 属性別カラー設定（自動適用用クラス） */
+.name-cute { color: #ff66aa; font-weight: bold; }
+.name-cool { color: #4477ff; font-weight: bold; }
+.name-passion { color: #ffaa00; font-weight: bold; }
+
+/* 視認性を高めるための微調整 */
+.event-details p span {
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* 試合画像エリアのスタイル */
+.match-sample-image {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 横長ワイドに設定 */
+    background: #252525;
+    margin-top: 20px;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.match-sample-image::after {
+    content: 'MATCH PREVIEW IMAGE';
+    color: #444;
+    font-family: 'Impact', sans-serif;
+    font-size: 1rem;
+}
+
+.match-sample-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <p style="color: var(--gold); font-weight: bold; margin-bottom: 10px;">ONLINE SPECIAL EVENT</p>
+    <h1 class="event-title-main">DOMINATED IDOL Vol.1</h1>
+</header>
+
+<div class="container">
+    <div class="event-hero">
+        <div class="poster-area">
+            </div>
+      <div class="event-details">
+    <h2>THE MAIN EVENT</h2>
+    <p style="font-size: 1.5rem; line-height: 1.6; font-family: 'Impact', sans-serif;">
+        <span class="name-passion">及川 雫</span><br>
+        <span style="font-style: italic; color: #666; font-size: 1rem;">vs</span><br>
+        <span class="name-cute">小早川 紗枝</span>
+    </p>
+    <table class="info-table">
+        <tr><th>DATE</th><td>2026.03.15 (SUN)</td></tr>
+        <tr><th>TIME</th><td>15 min.</td></tr>
+    </table>
+
+    <div class="match-sample-image">
+        </div>
+</div>
+
+    <div class="ticket-grid">
+        <div class="ticket-card">
+            <div class="ticket-name">STANDARD PPV</div>
+            <p style="color: #888;">ライブ視聴 + 1週間アーカイブ</p>
+            <div class="price">3,500<span>円</span></div>
+            <a href="#" class="buy-button">BUY NOW</a>
+        </div>
+
+        <div class="ticket-card" style="border-color: var(--gold); background: #2a2210;">
+            <div class="ticket-name" style="color: var(--gold);">PREMIUM BUNDLE</div>
+            <p style="color: #aaa;">デジタルパンフ + 特典映像付</p>
+            <div class="price">5,500<span>円</span></div>
+            <a href="#" class="buy-button">BUY NOW</a>
+        </div>
+    </div>
+
+    <div class="notes">
+        <h3>ご購入にあたっての注意事項</h3>
+        <ul>
+            <li>本配信は、WRESTLE M@STER公式アプリおよびブラウザから視聴可能です。</li>
+            <li>購入後の払い戻しは原則お受けできませんので、推奨環境をご確認の上ご購入ください。</li>
+            <li>アーカイブ配信は興行終了から2時間後より開始予定です。</li>
+        </ul>
+    </div>
+
+    <a href="index.html" class="index.html">≪ BACK TO index</a>
+</div>
+
+<footer style="text-align: center; padding: 40px; color: #444; font-size: 0.8rem;">
+    &copy; 2026 STARLIGHT RING OFFICIAL
+</footer>
+
+</body>
+</html>

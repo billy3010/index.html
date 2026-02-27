@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCHEDULE | WRESTLE M@STER</title>
+    <style>
+        :root {
+            --cute: #ff66aa;
+            --cool: #4477ff;
+            --passion: #ffaa00;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --accent-blue: #2681c8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Impact', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 5px solid var(--accent-blue);
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--accent-blue);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        /* --- イベント情報セクション --- */
+        .event-header {
+            background: linear-gradient(90deg, #333, #000);
+            padding: 15px 25px;
+            border-left: 8px solid var(--accent-blue);
+            margin-bottom: 30px;
+        }
+
+        .event-name { font-size: 1.8rem; margin: 0; color: #fff; }
+        .event-meta { font-family: sans-serif; color: #aaa; margin-top: 5px; }
+
+        /* --- 対戦カードのデザイン --- */
+        .match-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 試合タイトル（第○試合、メインイベントなど） */
+        .match-number {
+            background: #2a2a2a;
+            padding: 5px 15px;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .match-type { color: #888; font-family: sans-serif; font-size: 0.8rem; }
+
+        /* 対戦エリア */
+        .match-content {
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            align-items: center;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .wrestler-name {
+            font-size: 1.6rem;
+            padding: 10px;
+        }
+
+        /* 属性に応じたアンダーライン */
+        .name-cute { border-bottom: 4px solid var(--cute); }
+        .name-cool { border-bottom: 4px solid var(--cool); }
+        .name-passion { border-bottom: 4px solid var(--passion); }
+
+        .vs-sign {
+            font-size: 2rem;
+            font-style: italic;
+            color: #555;
+            position: relative;
+        }
+
+        .vs-sign::before, .vs-sign::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: #444;
+        }
+        .vs-sign::before { left: -35px; }
+        .vs-sign::after { right: -35px; }
+
+        /* 特記事項（タイトルマッチなど） */
+        .match-footer {
+            background: rgba(38, 129, 200, 0.1);
+            padding: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-family: sans-serif;
+        }
+
+        /* 戻るボタン */
+        .footer-nav {
+            margin-top: 50px;
+            text-align: right;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .match-content { grid-template-columns: 1fr; gap: 10px; }
+            .vs-sign::before, .vs-sign::after { display: none; }
+            .wrestler-name { font-size: 1.3rem; }
+        }
+
+        /* --- 属性混合アンダーバー --- */
+        .mixed-underline {
+        /* 1本の線を半分ずつ塗り分ける設定 */
+        border-bottom: 4px solid;
+        /* border-imageを使うことで、1本の線に2色を適用します */
+        border-image: linear-gradient(90deg, var(--left-color)      50%, var(--right-color) 50%) 1;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="title">UPCOMING CARDS</h1>
+    </header>
+
+    <div class="event-header">
+        <h2 class="event-name">Wrestle Groove -Love∞Destiny-</h2>
+        <div class="event-meta">2026.XX.XX | 18:00 START | 美城ホール</div>
+    </div>
+
+    <div class="match-card">
+        <div class="match-number">
+            <span>1st MATCH</span>
+            <span class="match-type">SINGLE MATCH 30MIN LIMIT</span>
+        </div>
+        <div class="match-content">
+            <div class="wrestler-name name-cool">多田　李衣菜</div>
+            <div class="vs-sign">VS</div>
+            <div class="wrestler-name name-cute">前川　みく</div>
+        </div>
+    </div>
+
+    <div class="match-card">
+        <div class="match-number">
+            <span>2nd MATCH</span>
+            <span class="match-type">SINGLE MATCH 30MIN LIMIT</span>
+        </div>
+        <div class="match-content">
+            <div class="wrestler-name name-cute">小日向　美穂</div>
+            <div class="vs-sign">VS</div>
+            <div class="wrestler-name name-cool">神崎　蘭子</div>
+         </div>
+    </div>
+
+    <div class="match-card" style="border: 2px solid var(--accent-blue);">
+        <div class="match-number" style="background: var(--accent-blue); color: #fff;">
+            <span>MAIN EVENT</span>
+            <span class="match-type" style="color: #eee;">SPECIAL SINGLE MATCH NO LIMIT＆ONLY GIVE UP</span>
+        </div>
+        <div class="match-content">
+            <div class="wrestler-name name-cute" style="font-size: 2.2rem;">佐久間　まゆ</div>
+            <div class="vs-sign">VS</div>
+            <div class="wrestler-name name-cool" style="font-size: 2.2rem;">北条　加蓮</div>
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="index.html" class="back-link">◀ BACK TO INDEX</a>
+    </div>
+</div>
+
+</body>
+</html>

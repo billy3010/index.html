@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPV | WRESTLE M@STER</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --accent-blue: #2681c8;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 5px solid var(--accent-blue);
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-family: 'Impact', sans-serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--accent-blue);
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- 大会リストのグリッド --- */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* 大会カード本体 */
+        .event-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 30px rgba(38, 129, 200, 0.3);
+        }
+
+        /* 大会バナー画像エリア */
+        .event-banner {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .event-banner::after {
+            content: 'EVENT IMAGE';
+            color: #444;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .banner-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* カード内のテキスト情報 */
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-date {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .event-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .event-venue {
+            font-size: 0.9rem;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-venue::before {
+            content: '📍';
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* ステータスバッジ（NEWなど） */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: #fff;
+            padding: 2px 10px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        /* 戻るボタン */
+        .footer-nav {
+            margin-top: 60px;
+            text-align: right;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 900;
+            font-style: italic;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #4da3ff;
+            text-shadow: 0 0 10px rgba(38, 129, 200, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .title { font-size: 2.5rem; }
+            .event-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="title">PPV</h1>
+    </header>
+
+    <div class="event-grid">
+        
+        <a href="ppv01" class="event-card">
+            <span class="badge">COMING SOON</span>
+            <div class="event-banner">
+                </div>
+            <div class="event-details">
+                <span class="event-date">2026.XX.XX</span>
+                <div class="event-name">DOMINATED IDOL VOl.1</div>
+               
+
+            </div>
+        </a>
+
+        </a>
+
+    </div>
+
+    <div class="footer-nav">
+        <a href="index.html" class="back-link">◀ BACK TO INDEX</a>
+    </div>
+</div>
+
+</body>
+</html>
