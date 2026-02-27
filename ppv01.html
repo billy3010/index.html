@@ -215,6 +215,50 @@
     z-index: 1; /* 文字を後ろへ */
 }
 
+/* --- 【修正】ポスターエリアとサンプル画像エリア --- */
+.poster-area, .match-sample-image {
+    width: 100%;
+    background: #252525;
+    border: 2px solid #444;
+    position: relative; /* 子要素の基準にする */
+    overflow: hidden;    /* 枠からはみ出た画像をカット */
+    z-index: 1;
+}
+
+/* ポスターは縦長（3:4） */
+.poster-area { aspect-ratio: 3 / 4; }
+
+/* サンプル画像はワイド（16:9） */
+.match-sample-image {
+    aspect-ratio: 16 / 9;
+    margin-top: 20px;
+}
+
+/* 枠の中の画像設定：これを入れると枠からずれなくなります */
+.poster-area img, .match-sample-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* 枠に合わせて自動トリミング */
+    position: relative;
+    z-index: 2;           /* 文字より前に出す */
+}
+
+/* 背景の文字設定：画像がある時は後ろに隠れます */
+.poster-area::after, .match-sample-image::after {
+    position: absolute;   /* 絶対配置にしてレイアウトを崩さない */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-family: 'Impact', sans-serif;
+    z-index: 0;           /* 画像の後ろへ */
+    white-space: nowrap;  /* 改行させない */
+}
+
+.poster-area::after { content: 'OFFICIAL EVENT POSTER'; font-size: 1.5rem; }
+.match-sample-image::after { content: 'MATCH PREVIEW'; font-size: 1rem; }
+
+
     </style>
 </head>
 <body>
@@ -226,23 +270,22 @@
 
 <div class="container">
     <div class="event-hero">
-        <div class="poster-area">
-    <img src="img/ppvposter1.jpg" alt="Event Poster" style="width: 100%; height: 100%; object-fit: cover; z-index: 2; position: relative;">
-            </div>
+<div class="poster-area">
+    <img src="img/ppvposter1.jpg" alt="Event Poster">
+</div>
       <div class="event-details">
     <h2>THE MAIN EVENT</h2>
     <p style="font-size: 1.5rem; line-height: 1.6; font-family: 'Impact', sans-serif;">
-        <span class="name-passion">及川 雫</span><br>
-        <span style="font-style: italic; color: #666; font-size: 1rem;">vs</span><br>
-        <span class="name-cute">小早川 紗枝</span>
+        <span class="name-cute">小早川　紗枝</span>
+        <span style="font-style: italic; color: #666; font-size: 1rem;"></span><span>　vs　</span>
+        <span class="name-passion">及川　雫</span><br>
     </p>
     <table class="info-table">
-        <tr><th>DATE</th><td>2026.XX.XX (SUN)</td></tr>
+        <tr><th>UPLOAD</th><td>2026.XX.XX (SUN)</td></tr>
         <tr><th>TIME</th><td>15 min.</td></tr>
     </table>
-
-    <div class="match-sample-image">
-    <img src="img/ppvsample1.jpg" alt="Match Sample">
+<div class="match-sample-image">
+    <img src="img/ppvsample1.jpg" alt="Match Preview">
 </div>
 </div>
 
@@ -267,7 +310,6 @@
         <ul>
             <li>本配信は、WRESTLE M@STER公式アプリおよびブラウザから視聴可能です。</li>
             <li>購入後の払い戻しは原則お受けできませんので、推奨環境をご確認の上ご購入ください。</li>
-            <li>アーカイブ配信は興行終了から2時間後より開始予定です。</li>
         </ul>
     </div>
 
