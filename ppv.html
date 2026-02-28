@@ -35,6 +35,7 @@
         .title {
             font-family: 'Impact', sans-serif;
             font-size: 3.5rem;
+            font-weight: bold;
             font-style: italic;
             color: var(--accent-blue);
             margin: 0;
@@ -42,14 +43,13 @@
             text-transform: uppercase;
         }
 
-        /* --- 大会リストのグリッド --- */
+        /* --- 大会リストのグリッド（枠組みはこれ1つだけ！） --- */
         .event-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        /* 大会カード本体 */
         .event-card {
             background: var(--card-bg);
             border: 1px solid #333;
@@ -59,6 +59,8 @@
             color: inherit;
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .event-card:hover {
@@ -72,29 +74,33 @@
             width: 100%;
             aspect-ratio: 16 / 9;
             background: #252525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
-        .event-banner::after {
-            content: 'EVENT IMAGE';
-            color: #444;
-            font-family: 'Impact', sans-serif;
-            font-size: 1.5rem;
-        }
-
-        .banner-img {
-            position: absolute;
+        .event-banner img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top; /* 上半分を優先して表示 */
+            position: absolute;
+            top: 0;
+            left: 0;
             z-index: 1;
         }
 
-        /* カード内のテキスト情報 */
+        .event-banner::after {
+            content: 'NO IMAGE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #444;
+            font-family: 'Impact', sans-serif;
+            font-size: 1.2rem;
+            z-index: 0;
+        }
+
         .event-details {
             padding: 20px;
         }
@@ -114,20 +120,6 @@
             margin-bottom: 10px;
         }
 
-        .event-venue {
-            font-size: 0.9rem;
-            color: #aaa;
-            display: flex;
-            align-items: center;
-        }
-
-        .event-venue::before {
-            content: '📍';
-            margin-right: 5px;
-            font-size: 0.8rem;
-        }
-
-        /* ステータスバッジ（NEWなど） */
         .badge {
             position: absolute;
             top: 10px;
@@ -141,7 +133,6 @@
             z-index: 10;
         }
 
-        /* 戻るボタン */
         .footer-nav {
             margin-top: 60px;
             text-align: right;
@@ -168,70 +159,36 @@
             .title { font-size: 2.5rem; }
             .event-grid { grid-template-columns: 1fr; }
         }
-
-/* ★修正点：ポスターエリア内の画像設定 */
-.poster-area img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    /* 枠に合わせて自動トリミング */
-    
-    /* ★ここが重要：上半分を優先して表示 */
-    object-position: center top; 
-    
-    position: relative;
-    z-index: 2;           /* 文字より前に出す */
-}
-
-/* ★修正：このページの一覧画像の表示設定 */
-.event-banner img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;    /* 枠に合わせてトリミング */
-    
-    /* ★ここが重要：上半分を優先して表示 */
-    object-position: center top; 
-    
-    position: absolute;   /* 枠いっぱいに広げる */
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1 class="title">PPV</h1>
+        <h1 class="title">PPV LIST</h1>
     </header>
 
     <div class="event-grid">
         
-
-        <a href="ppv02" class="event-card">
+        <a href="ppv02.html" class="event-card">
             <span class="badge">NEW</span>
             <div class="event-banner">
-    <img src="img/ppvposter2.jpg" alt="event banner">
-</div>
+                <img src="img/ppvposter2.jpg" alt="event banner">
+            </div>
             <div class="event-details">
                 <span class="event-date">2026.XX.XX</span>
-                <div class="event-name">DOMINATED IDOL VOl.2</div>
-
-        <a href="ppv01" class="event-card">
-            <span class="badge"></span>
-            <div class="event-banner">
-    <img src="img/ppvposter1.jpg" alt="event banner">
-</div>
-            <div class="event-details">
-                <span class="event-date">2026.XX.XX</span>
-                <div class="event-name">DOMINATED IDOL VOl.1</div>
-               
-
+                <div class="event-name">DOMINATED IDOL Vol.2</div>
             </div>
         </a>
 
+        <a href="ppv01.html" class="event-card">
+            <div class="event-banner">
+                <img src="img/ppvposter1.jpg" alt="event banner">
+            </div>
+            <div class="event-details">
+                <span class="event-date">2026.XX.XX</span>
+                <div class="event-name">DOMINATED IDOL Vol.1</div>
+            </div>
         </a>
 
     </div>

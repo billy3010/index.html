@@ -20,7 +20,7 @@
             font-family: 'Impact', 'Arial Black', sans-serif;
         }
 
-        /* --- 演出①：真っ黒な背景のイントロ画面 --- */
+        /* --- 演出①：イントロ画面 --- */
         #intro-overlay {
             position: fixed;
             top: 0;
@@ -53,11 +53,7 @@
         }
 
         @keyframes stampChar {
-            to {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
+            to { opacity: 1; transform: scale(1); filter: blur(0); }
         }
 
         /* --- 演出②：メインコンテンツ --- */
@@ -112,12 +108,12 @@
             transform: translateY(-3px);
         }
 
-        /* --- NEWSセクションのスタイル --- */
+        /* --- NEWSセクション --- */
         .news-section {
             max-width: 1100px;
             width: 90%;
             margin-bottom: 100px;
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* ニュースは読みやすさ優先 */
+            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         .section-heading {
@@ -158,16 +154,15 @@
             aspect-ratio: 16 / 9;
             background: #252525;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
         }
 
-        .news-image-wrap::after {
-            content: 'PRESS PHOTO';
-            color: #444;
-            font-weight: bold;
-            font-family: 'Impact', sans-serif;
+        /* ニュース画像の設定（上半分優先） */
+        .news-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
         }
 
         .category-tag {
@@ -191,6 +186,7 @@
         .news-date { font-size: 0.8rem; color: #888; display: block; margin-bottom: 8px; }
         .news-title { font-size: 1.2rem; margin: 0 0 12px 0; line-height: 1.4; color: #fff; font-weight: bold; }
         .news-card:hover .news-title { color: var(--accent-blue); }
+        
         .news-excerpt {
             font-size: 0.9rem;
             color: #aaa;
@@ -204,7 +200,6 @@
 
         .news-more { font-size: 0.8rem; font-weight: 900; color: var(--accent-blue); letter-spacing: 1px; }
 
-        /* 共通設定 */
         .fade-out { opacity: 0; pointer-events: none; }
         .visible { opacity: 1 !important; }
 
@@ -223,70 +218,44 @@
 
     <div id="main-site">
         <div class="top-banner-container">
-            <img src="belt.png" alt="Championship Belt" class="top-banner">
+            <img src="img/belt.png" alt="Championship Belt" class="top-banner">
         </div>
         
-        <div class="content-wrapper">
+        <nav class="content-wrapper">
             <ul class="main-nav">
-                <li><a href="#" class="nav-link">NEWS</a></li>
+                <li><a href="#news" class="nav-link">NEWS</a></li>
                 <li><a href="schedule.html" class="nav-link">SCHEDULE</a></li>
                 <li><a href="results.html" class="nav-link">RESULTS</a></li>
                 <li><a href="roster.html" class="nav-link">WRESTLERS</a></li>
                 <li><a href="ppv.html" class="nav-link">PPV</a></li>
             </ul>
-        </div>
+        </nav>
 
-        <section class="news-section">
-    <h2 class="section-heading">LATEST NEWS</h2>
-    <div class="news-grid">
-        <a href="#" class="news-card">
-            <div class="news-image-wrap">
-                <div class="category-tag tag-event">PPV</div>
-            </div>
-            <div class="news-body">
-                <span class="news-date">2026.XX.XX</span>
-                <h3 class="news-title">DOMINATED IDOL VOL.2 </h3>
-                <p class="news-excerpt">規格外のパワーを持つ怪物・及川雫をフィーチャーした企画の第2弾。今回のターゲットは大槻唯。果たして結末は？</p>
-                <span class="news-more">READ MORE</span>
-            </div>
-        </a>
-        
-        <section class="news-section">
-    <h2 class="section-heading">LATEST NEWS</h2>
-    <div class="news-grid">
-        <a href="#" class="news-card">
-            <div class="news-image-wrap">
-                <div class="category-tag tag-event">PPV</div>
-            </div>
-            <div class="news-body">
-                <span class="news-date">2026.XX.XX</span>
-                <h3 class="news-title">DOMINATED IDOL VOL.1 </h3>
-                <p class="news-excerpt">規格外のパワーを持つ怪物・及川雫をフィーチャーした企画の第1弾。衝撃の結末を目撃せよ。</p>
-                <span class="news-more">READ MORE</span>
-            </div>
-        </a>
-
-        <a href="#" class="news-card">
-            <div class="news-image-wrap">
-                <div class="category-tag tag-roster">ROSTER</div>
-            </div>
-            <div class="news-body">
-                <span class="news-date">2026.XX.XX</span>
-                <h3 class="news-title">【電撃参戦】765プロ・283プロ・100プロから参戦決定</h3>
-                <p class="news-excerpt">他団体からも続々参戦決定！迎え撃つ346プロ！詳細は後日発表！</p>
-                <span class="news-more">READ MORE</span>
-            </div>
-        </a>
+        <section class="news-section" id="news">
+            <h2 class="section-heading">LATEST NEWS</h2>
+            <div class="news-grid">
+                
+                <a href="ppv01.html" class="news-card">
+                    <div class="news-image-wrap">
+                        <div class="category-tag tag-event">PPV</div>
+                        <img src="img/ppvposter2.jpg" alt="News Image">
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date">2026.02.28</span>
+                        <h3 class="news-title">DOMINATED IDOL Vol.2 発売開始</h3>
+                        <p class="news-excerpt">及川雫をフィーチャーした企画第2弾。今回のターゲットは大槻唯。衝撃の結末を目撃せよ。</p>
+                        <span class="news-more">READ MORE</span>
+                    </div>
                 </a>
 
-                <a href="#" class="news-card">
+                <a href="results1.html" class="news-card">
                     <div class="news-image-wrap">
                         <div class="category-tag tag-event">EVENT</div>
                     </div>
                     <div class="news-body">
-                        <span class="news-date">2026.XX.XX</span>
-                        <h3 class="news-title">次回興行 Wrestle Groove -Love∞Destiny- </h3>
-                        <p class="news-excerpt">メインイベントは佐久間まゆVS北条加蓮に決定！</p>
+                        <span class="news-date">2026.02.20</span>
+                        <h3 class="news-title">次回興行 Wrestle Groove 決定</h3>
+                        <p class="news-excerpt">メインイベントは佐久間まゆ VS 北条加蓮。愛と執念がリングで激突する。</p>
                         <span class="news-more">READ MORE</span>
                     </div>
                 </a>
@@ -296,9 +265,9 @@
                         <div class="category-tag tag-champ">CHAMPION</div>
                     </div>
                     <div class="news-body">
-                        <span class="news-date">2026.XX.XX</span>
-                        <h3 class="news-title">【至宝公開】「シンデレラガール」新チャンピオンベルトの全貌が明らかに。</h3>
-                        <p class="news-excerpt">団体の頂点に立つ者にのみ与えられる伝説のベルトを一新。デザインは「ガラスの靴」をモチーフにしている。</p>
+                        <span class="news-date">2026.02.10</span>
+                        <h3 class="news-title">新チャンピオンベルトの全貌公開</h3>
+                        <p class="news-excerpt">「ガラスの靴」をモチーフにした至宝が完成。団体の象徴が一新される。</p>
                         <span class="news-more">READ MORE</span>
                     </div>
                 </a>
@@ -306,7 +275,7 @@
             </div>
         </section>
 
-        <footer style="padding: 40px; color: #444; font-size: 0.8rem; font-family: sans-serif;">
+        <footer style="padding: 40px; color: #444; font-size: 0.8rem;">
             &copy; 2026 STARLIGHT RING OFFICIAL
         </footer>
     </div>
@@ -318,7 +287,6 @@
             const mainSite = document.getElementById('main-site');
             const text = introText.textContent;
             
-            // 1. 文字を一文字ずつ<span>で囲み直す
             introText.textContent = '';
             for (let i = 0; i < text.length; i++) {
                 const span = document.createElement('span');
@@ -328,24 +296,16 @@
                 introText.appendChild(span);
             }
 
-            // 2. 全ての文字が表示された後にフェードアウトを開始
             const totalDisplayTime = text.length * 150 + 1000;
 
             setTimeout(() => {
                 introOverlay.classList.add('fade-out');
-                
                 setTimeout(() => {
                     mainSite.classList.add('visible');
-                    // スクロールを許可
                     document.body.style.overflow = 'auto';
                 }, 500);
             }, totalDisplayTime);
         });
     </script>
 </body>
-
 </html>
-
-
-
-
