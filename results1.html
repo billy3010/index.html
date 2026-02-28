@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MATCH REPORT | WRESTLE M@STER</title>
+    <style>
+        :root {
+            --cute: #ff66aa;
+            --cool: #4477ff;
+            --passion: #ffaa00;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-sub: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* ヘッダーエリア */
+        header {
+            background: linear-gradient(135deg, #333, #000);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 4px solid var(--passion); /* 勝利者の属性色に合わせる */
+        }
+
+        .event-name {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.2rem;
+            color: var(--passion);
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .result-title {
+            font-family: 'Impact', sans-serif;
+            font-size: 3rem;
+            font-style: italic;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        /* 試合結果サマリー */
+        .match-summary {
+            padding: 40px 20px;
+            text-align: center;
+            background: #1a1a1a;
+        }
+
+        .vs-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .wrestler-name {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .name-passion { color: var(--passion); }
+        .name-cool { color: var(--cool); }
+        .name-cute { color: var(--cute); }
+
+        .vs-badge {
+            font-family: 'Impact', sans-serif;
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        .finish-hold {
+            font-size: 1.2rem;
+            color: #fff;
+            background: #333;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        /* フォトギャラリー（3枚構成） */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+            background: #000;
+        }
+
+        .photo-item {
+            aspect-ratio: 1 / 1;
+            background: #252525;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top; /* 上半分を優先 */
+            position: relative;
+            z-index: 2;
+        }
+
+        .photo-item::after {
+            content: 'MATCH PHOTO';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #444;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        /* マッチレポート本文 */
+        .report-section {
+            padding: 40px;
+            line-height: 1.8;
+        }
+
+        .report-section h3 {
+            border-left: 4px solid var(--passion);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        .report-text {
+            color: var(--text-sub);
+            font-size: 1rem;
+            white-space: pre-wrap; /* 改行を反映 */
+        }
+
+        /* 戻るナビゲーション */
+        .footer-nav {
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .back-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        @media (max-width: 600px) {
+            .vs-container { flex-direction: column; gap: 10px; }
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="event-name">Wrestle Groove -Love∞Destiny-</div>
+        <h1 class="result-title">MATCH REPORT</h1>
+    </header>
+
+    <div class="match-summary">
+        <div class="vs-container">
+            <div class="wrestler-name name-cute">佐久間　まゆ <span style="font-size: 1rem; color:#fff;">[○]</span></div>
+            <div class="vs-badge">VS</div>
+            <div class="wrestler-name name-cool">北条　加蓮 <span style="font-size: 1rem; color:#fff;">[●]</span></div>
+        </div>
+        <div class="finish-hold">44分45秒　ヘッドシザース→ギブアップ</div>
+    </div>
+
+    <div class="photo-gallery">
+        <div class="photo-item"><img src="img/gamesample1_1.jpg" alt="Photo 1"></div>
+        <div class="photo-item"><img src="img/gamesample1_2.jpg" alt="Photo 2"></div>
+        <div class="photo-item"><img src="img/gamesample1_3.jpg" alt="Photo 3"></div>
+    </div>
+
+    <section class="report-section">
+        <h3>まゆの執念</h3>
+        <div class="report-text">
+Masqueradeをフィーチャーした興行のクライマックスは、ユニットの2枚看板・佐久間まゆと北条加蓮のシングルマッチ。
+ユニットとしての華やかな活動の裏で、常に互いの実力を認め合い、同時に激しく火花を散らしてきた二人の直接対決。
+会場は2人のイメージカラーのペンライトが混ざり合い、異様な熱気と緊張感に包まれた。
+
+ゴングとともに仕掛けたのは加蓮だった。
+アグレッシブに速攻を仕掛け、ジャンピングエルボーやドロップキックを連発。
+一方、まゆは打撃の応酬には付き合わず、加蓮の猛攻を浴びながらも闘志の火は消えない。
+
+試合が動いたのは開始15分を過ぎた頃だった。
+激しい攻撃を加え続けたことが逆に災いし、課題のスタミナ不足を露呈してしまう。
+肩で息をする加蓮の一瞬の隙を、まゆは見逃さず組み付き引きずり倒すと、渾身の力でボストンクラブへ持ち込み加蓮の背骨に悲鳴を上げさせる。
+加蓮は震える腕で必死にロープへと這う。
+指先が触れる、あと数センチ。
+しかし、勝利への執念に燃えるまゆは無慈悲だった。
+加蓮の足を掴んでリング中央へと引き戻すと、加蓮に引導を渡すべくヘッドシザースを仕掛ける。
+単なるシザースではなく、強引にその両脚を左右に割り開き、屈辱的なポーズを強いたのだ。
+物理的な痛み以上に、プライドの高い彼女の精神が削られていく。
+視界が滲み、頬を伝うのは汗か、それとも悔し涙か。
+
+「…ギ…ギブ…アップ…」
+
+絞り出すような敗北宣言。
+レフェリーが要請したゴングが鳴り響いたが、まゆは強引に引きはがされるまで加蓮に攻撃を加え続けたのだった。        </div>
+    </section>
+
+    <div class="footer-nav">
+        <a href="index.html" class="back-link">≪ BACK TO INDEX</a>
+    </div>
+</div>
+
+</body>
+</html>
